@@ -1,0 +1,11 @@
+debug\system_qn908x.o: ../../../../../devices/QN908X/system_QN908X.c
+debug\system_qn908x.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+debug\system_qn908x.o: ../../../../../devices/QN908X/fsl_device_registers.h
+debug\system_qn908x.o: ../../../../../devices/QN908X/QN908X.h
+debug\system_qn908x.o: ../../../../../CMSIS/Include/core_cm4.h
+debug\system_qn908x.o: ../../../../../CMSIS/Include/core_cmInstr.h
+debug\system_qn908x.o: ../../../../../CMSIS/Include/cmsis_armcc.h
+debug\system_qn908x.o: ../../../../../CMSIS/Include/core_cmFunc.h
+debug\system_qn908x.o: ../../../../../CMSIS/Include/core_cmSimd.h
+debug\system_qn908x.o: ../../../../../devices/QN908X/system_QN908X.h
+debug\system_qn908x.o: ../../../../../devices/QN908X/QN908X_features.h

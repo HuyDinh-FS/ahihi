@@ -1,0 +1,854 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;/******************************************************
+                       ***********************
+    2 00000000         ; * @file:    startup_QN908X.s
+    3 00000000         ; * @purpose: CMSIS Cortex-M4 Core Device Startup File f
+                       or the
+    4 00000000         ; *           QN908X
+    5 00000000         ; * @version: 1.0
+    6 00000000         ; * @date:    2016-6-24
+    7 00000000         ; *
+    8 00000000         ; * Copyright: 1997 - 2016 Freescale Semiconductor, Inc.
+                        All Rights Reserved.
+    9 00000000         ; *
+   10 00000000         ; * Redistribution and use in source and binary forms, w
+                       ith or without modification,
+   11 00000000         ; * are permitted provided that the following conditions
+                        are met:
+   12 00000000         ; *
+   13 00000000         ; * o Redistributions of source code must retain the abo
+                       ve copyright notice, this list
+   14 00000000         ; *   of conditions and the following disclaimer.
+   15 00000000         ; *
+   16 00000000         ; * o Redistributions in binary form must reproduce the 
+                       above copyright notice, this
+   17 00000000         ; *   list of conditions and the following disclaimer in
+                        the documentation and/or
+   18 00000000         ; *   other materials provided with the distribution.
+   19 00000000         ; *
+   20 00000000         ; * o Neither the name of Freescale Semiconductor, Inc. 
+                       nor the names of its
+   21 00000000         ; *   contributors may be used to endorse or promote pro
+                       ducts derived from this
+   22 00000000         ; *   software without specific prior written permission
+                       .
+   23 00000000         ; *
+   24 00000000         ; * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS A
+                       ND CONTRIBUTORS "AS IS" AND
+   25 00000000         ; * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NO
+                       T LIMITED TO, THE IMPLIED
+   26 00000000         ; * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PART
+                       ICULAR PURPOSE ARE
+   27 00000000         ; * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER O
+                       R CONTRIBUTORS BE LIABLE FOR
+   28 00000000         ; * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY
+                       , OR CONSEQUENTIAL DAMAGES
+   29 00000000         ; * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBST
+                       ITUTE GOODS OR SERVICES;
+   30 00000000         ; * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPT
+                       ION) HOWEVER CAUSED AND ON
+   31 00000000         ; * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+                        LIABILITY, OR TORT
+   32 00000000         ; * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY W
+                       AY OUT OF THE USE OF THIS
+   33 00000000         ; * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+                        DAMAGE.
+   34 00000000         ; *
+   35 00000000         ; *------- <<< Use Configuration Wizard in Context Menu 
+                       >>> ------------------
+   36 00000000         ; *
+   37 00000000         ; ******************************************************
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+                       ***********************/
+   38 00000000         
+   39 00000000         
+   40 00000000                 PRESERVE8
+   41 00000000                 THUMB
+   42 00000000         
+   43 00000000         ; Vector Table Mapped to Address 0 at Reset
+   44 00000000                 AREA             RESET, DATA, READONLY
+   45 00000000                 EXPORT           __Vectors
+   46 00000000                 IMPORT           |Image$$ARM_LIB_STACK$$ZI$$Limi
+t|
+   47 00000000         
+   48 00000000 00000000 
+                       __Vectors
+                               DCD              |Image$$ARM_LIB_STACK$$ZI$$Limi
+t| 
+                                                            ; Top of Stack
+   49 00000004 00000000        DCD              Reset_Handler ; Reset Handler
+   50 00000008         
+   51 00000008 00000000        DCD              NMI_Handler
+   52 0000000C 00000000        DCD              HardFault_Handler
+   53 00000010 00000000        DCD              MemManage_Handler
+   54 00000014 00000000        DCD              BusFault_Handler
+   55 00000018 00000000        DCD              UsageFault_Handler
+   56 0000001C         __vector_table_0x1c
+   57 0000001C 00000000        DCD              0
+   58 00000020 00000000        DCD              0
+   59 00000024 00000100        DCD              0x00000100  ; Application versi
+                                                            on: 0.0.1.0
+   60 00000028 00000000        DCD              0
+   61 0000002C 00000000        DCD              SVC_Handler
+   62 00000030 00000000        DCD              DebugMon_Handler
+   63 00000034 00000000        DCD              0
+   64 00000038 00000000        DCD              PendSV_Handler
+   65 0000003C 00000000        DCD              SysTick_Handler
+   66 00000040         
+   67 00000040         ; External Interrupts
+   68 00000040 00000000        DCD              EXT_GPIO_WAKEUP_IRQHandler 
+                                                            ;  0:  IO wakeup
+   69 00000044 00000000        DCD              OSC_IRQHandler ;  1:  BLE oscil
+                                                            lator wakeup
+   70 00000048 00000000        DCD              ACMP0_IRQHandler ;  2:  ACMP0
+   71 0000004C 00000000        DCD              ACMP1_IRQHandler ;  3:  ACMP1
+   72 00000050 00000000        DCD              0           ;  4:  Reserved
+   73 00000054 00000000        DCD              RTC_SEC_IRQHandler ;  5:  RTC s
+                                                            econd match
+   74 00000058 00000000        DCD              RTC_FR_IRQHandler ;  6:  RTC fr
+                                                            ee running match
+   75 0000005C 00000000        DCD              CS_WAKEUP_IRQHandler ;  7:  Cap
+                                                            sense wakeup
+   76 00000060 00000000        DCD              CS_IRQHandler ;  8:  Capsense d
+                                                            etection
+   77 00000064 00000000        DCD              GPIOA_IRQHandler ;  9:  GPIOA
+   78 00000068 00000000        DCD              GPIOB_IRQHandler ; 10:  GPIOB
+   79 0000006C 00000000        DCD              DMA0_IRQHandler ; 11:  DMA
+   80 00000070 00000000        DCD              PIN_INT0_IRQHandler 
+                                                            ; 12:  PINT0
+   81 00000074 00000000        DCD              PIN_INT1_IRQHandler 
+                                                            ; 13:  PINT1
+
+
+
+ARM Macro Assembler    Page 3 
+
+
+   82 00000078 00000000        DCD              PIN_INT2_IRQHandler 
+                                                            ; 14:  PINT2
+   83 0000007C 00000000        DCD              PIN_INT3_IRQHandler 
+                                                            ; 15:  PINT3
+   84 00000080 00000000        DCD              OSC_INT_LOW_IRQHandler ; 16:  I
+                                                            nverse of OSC_INT
+   85 00000084 00000000        DCD              USB0_IRQHandler ; 17:  USB
+   86 00000088 00000000        DCD              FLEXCOMM0_IRQHandler 
+                                                            ; 18:  FLEXCOMM0
+   87 0000008C 00000000        DCD              FLEXCOMM1_IRQHandler 
+                                                            ; 19:  FLEXCOMM1
+   88 00000090 00000000        DCD              FLEXCOMM2_IRQHandler 
+                                                            ; 20:  FLEXCOMM2
+   89 00000094 00000000        DCD              FLEXCOMM3_IRQHandler 
+                                                            ; 21:  FLEXCOMM3
+   90 00000098 00000000        DCD              BLE_IRQHandler ; 22:  BLE
+   91 0000009C 00000000        DCD              FSP_IRQHandler ; 23:  FSP
+   92 000000A0 00000000        DCD              QDEC0_IRQHandler ; 24:  QDEC0
+   93 000000A4 00000000        DCD              QDEC1_IRQHandler ; 25:  QDEC1
+   94 000000A8 00000000        DCD              CTIMER0_IRQHandler 
+                                                            ; 26:  Timer 0
+   95 000000AC 00000000        DCD              CTIMER1_IRQHandler 
+                                                            ; 27:  Timer 1
+   96 000000B0 00000000        DCD              CTIMER2_IRQHandler 
+                                                            ; 28:  Timer 2
+   97 000000B4 00000000        DCD              CTIMER3_IRQHandler 
+                                                            ; 29:  Timer 3
+   98 000000B8 00000000        DCD              WDT_IRQHandler ; 30:  Watchdog 
+                                                            Timer
+   99 000000BC 00000000        DCD              ADC_IRQHandler ; 31:  ADC
+  100 000000C0 00000000        DCD              DAC_IRQHandler ; 32:  DAC
+  101 000000C4 00000000        DCD              XTAL_READY_IRQHandler 
+                                                            ; 33:  XTAL ready
+  102 000000C8 00000000        DCD              FLASH_IRQHandler ; 34:  FLASH
+  103 000000CC 00000000        DCD              SPIFI0_IRQHandler ; 35:  SPIFI
+  104 000000D0 00000000        DCD              SCT0_IRQHandler ; 36:  SCT
+  105 000000D4 00000000        DCD              RTC_CAP_IRQHandler 
+                                                            ; 37:  RTC capture
+  106 000000D8 00000000        DCD              RNG_IRQHandler ; 38:  RNG
+  107 000000DC 00000000        DCD              0           ; 39:  Reserved
+  108 000000E0 00000000        DCD              CALIB_IRQHandler 
+                                                            ; 40:  Calibration
+  109 000000E4 00000000        DCD              0           ; 41:  Reserved
+  110 000000E8 00000000        DCD              0           ; 42:  Reserved
+  111 000000EC 00000000        DCD              0           ; 43:  Reserved
+  112 000000F0 00000000        DCD              0           ; 44:  Reserved
+  113 000000F4 00000000        DCD              0           ; 45:  Reserved
+  114 000000F8 00000000        DCD              0           ; 46:  Reserved
+  115 000000FC 00000000        DCD              0           ; 47:  Reserved
+  116 00000100 00000000        DCD              0           ; 48:  Reserved
+  117 00000104 00000000        DCD              0           ; 49:  Reserved
+  118 00000108 00000000        DCD              0           ; 50:  Reserved
+  119 0000010C 00000000        DCD              BOD_IRQHandler ; 51:  BOD
+  120 00000110         
+  121 00000110                 AREA             |.text|, CODE, READONLY
+  122 00000000         
+  123 00000000         ; Reset Handler
+  124 00000000         Reset_Handler
+                               PROC
+
+
+
+ARM Macro Assembler    Page 4 
+
+
+  125 00000000                 EXPORT           Reset_Handler                  
+ [WEAK]
+  126 00000000 4933            LDR              R1, =0x40000014
+  127 00000002 6808            LDR              R0, [R1]
+  128 00000004 F04F 0201       LDR              R2, =0x00000001
+  129 00000008 EA40 0002       ORR              R0, R0, R2
+  130 0000000C 6008            STR              R0, [R1]
+  131 0000000E         
+  132 0000000E 4831            LDR              R0, =|Image$$ARM_LIB_STACK$$ZI$
+$Limit|
+  133 00000010 F380 8808       MSR              MSP, R0
+  134 00000014         
+  135 00000014                 IMPORT           SystemInit
+  136 00000014                 IMPORT           __main
+  137 00000014 4830            LDR              R0, =SystemInit
+  138 00000016 4780            BLX              R0
+  139 00000018 4830            LDR              R0, =__main
+  140 0000001A 4700            BX               R0
+  141 0000001C                 ENDP
+  142 0000001C                 ALIGN
+  143 0000001C         
+  144 0000001C         ; Dummy Exception Handlers (infinite loops which can be 
+                       modified)
+  145 0000001C         NMI_Handler
+                               PROC
+  146 0000001C                 EXPORT           NMI_Handler                    
+ [WEAK]
+  147 0000001C E7FE            B                .
+  148 0000001E                 ENDP
+  149 0000001E         
+  151 0000001E         HardFault_Handler
+                               PROC
+  152 0000001E                 EXPORT           HardFault_Handler              
+ [WEAK]
+  153 0000001E E7FE            B                .
+  154 00000020                 ENDP
+  155 00000020         
+  156 00000020         MemManage_Handler
+                               PROC
+  157 00000020                 EXPORT           MemManage_Handler              
+ [WEAK]
+  158 00000020 E7FE            B                .
+  159 00000022                 ENDP
+  160 00000022         
+  161 00000022         BusFault_Handler
+                               PROC
+  162 00000022                 EXPORT           BusFault_Handler               
+ [WEAK]
+  163 00000022 E7FE            B                .
+  164 00000024                 ENDP
+  165 00000024         
+  166 00000024         UsageFault_Handler
+                               PROC
+  167 00000024                 EXPORT           UsageFault_Handler             
+ [WEAK]
+  168 00000024 E7FE            B                .
+  169 00000026                 ENDP
+  170 00000026         
+  171 00000026         SVC_Handler
+
+
+
+ARM Macro Assembler    Page 5 
+
+
+                               PROC
+  172 00000026                 EXPORT           SVC_Handler                    
+ [WEAK]
+  173 00000026 E7FE            B                .
+  174 00000028                 ENDP
+  175 00000028         
+  176 00000028         DebugMon_Handler
+                               PROC
+  177 00000028                 EXPORT           DebugMon_Handler               
+ [WEAK]
+  178 00000028 E7FE            B                .
+  179 0000002A                 ENDP
+  180 0000002A         
+  181 0000002A         PendSV_Handler
+                               PROC
+  182 0000002A                 EXPORT           PendSV_Handler                 
+ [WEAK]
+  183 0000002A E7FE            B                .
+  184 0000002C                 ENDP
+  185 0000002C         
+  186 0000002C         SysTick_Handler
+                               PROC
+  187 0000002C                 EXPORT           SysTick_Handler                
+ [WEAK]
+  188 0000002C E7FE            B                .
+  189 0000002E                 ENDP
+  190 0000002E         
+  192 0000002E         EXT_GPIO_WAKEUP_IRQHandler
+                               PROC
+  193 0000002E                 EXPORT           EXT_GPIO_WAKEUP_IRQHandler   [W
+EAK]
+  194 0000002E 482C            LDR              R0, =EXT_GPIO_WAKEUP_DriverIRQH
+andler
+  195 00000030 4700            BX               R0
+  196 00000032                 ENDP
+  197 00000032         
+  199 00000032         OSC_IRQHandler
+                               PROC
+  200 00000032                 EXPORT           OSC_IRQHandler               [W
+EAK]
+  201 00000032 482C            LDR              R0, =OSC_DriverIRQHandler
+  202 00000034 4700            BX               R0
+  203 00000036                 ENDP
+  204 00000036         
+  206 00000036         ACMP0_IRQHandler
+                               PROC
+  207 00000036                 EXPORT           ACMP0_IRQHandler             [W
+EAK]
+  208 00000036 482C            LDR              R0, =ACMP0_DriverIRQHandler
+  209 00000038 4700            BX               R0
+  210 0000003A                 ENDP
+  211 0000003A         
+  213 0000003A         ACMP1_IRQHandler
+                               PROC
+  214 0000003A                 EXPORT           ACMP1_IRQHandler             [W
+EAK]
+  215 0000003A 482C            LDR              R0, =ACMP1_DriverIRQHandler
+  216 0000003C 4700            BX               R0
+  217 0000003E                 ENDP
+
+
+
+ARM Macro Assembler    Page 6 
+
+
+  218 0000003E         
+  220 0000003E         RTC_SEC_IRQHandler
+                               PROC
+  221 0000003E                 EXPORT           RTC_SEC_IRQHandler           [W
+EAK]
+  222 0000003E 482C            LDR              R0, =RTC_SEC_DriverIRQHandler
+  223 00000040 4700            BX               R0
+  224 00000042                 ENDP
+  225 00000042         
+  227 00000042         RTC_FR_IRQHandler
+                               PROC
+  228 00000042                 EXPORT           RTC_FR_IRQHandler            [W
+EAK]
+  229 00000042 482C            LDR              R0, =RTC_FR_DriverIRQHandler
+  230 00000044 4700            BX               R0
+  231 00000046                 ENDP
+  232 00000046         
+  234 00000046         CS_WAKEUP_IRQHandler
+                               PROC
+  235 00000046                 EXPORT           CS_WAKEUP_IRQHandler         [W
+EAK]
+  236 00000046 482C            LDR              R0, =CS_WAKEUP_DriverIRQHandler
+  237 00000048 4700            BX               R0
+  238 0000004A                 ENDP
+  239 0000004A         
+  241 0000004A         CS_IRQHandler
+                               PROC
+  242 0000004A                 EXPORT           CS_IRQHandler                [W
+EAK]
+  243 0000004A 482C            LDR              R0, =CS_DriverIRQHandler
+  244 0000004C 4700            BX               R0
+  245 0000004E                 ENDP
+  246 0000004E         
+  248 0000004E         GPIOA_IRQHandler
+                               PROC
+  249 0000004E                 EXPORT           GPIOA_IRQHandler             [W
+EAK]
+  250 0000004E 482C            LDR              R0, =GPIOA_DriverIRQHandler
+  251 00000050 4700            BX               R0
+  252 00000052                 ENDP
+  253 00000052         
+  255 00000052         GPIOB_IRQHandler
+                               PROC
+  256 00000052                 EXPORT           GPIOB_IRQHandler             [W
+EAK]
+  257 00000052 482C            LDR              R0, =GPIOB_DriverIRQHandler
+  258 00000054 4700            BX               R0
+  259 00000056                 ENDP
+  260 00000056         
+  262 00000056         DMA0_IRQHandler
+                               PROC
+  263 00000056                 EXPORT           DMA0_IRQHandler              [W
+EAK]
+  264 00000056 482C            LDR              R0, =DMA0_DriverIRQHandler
+  265 00000058 4700            BX               R0
+  266 0000005A                 ENDP
+  267 0000005A         
+  269 0000005A         PIN_INT0_IRQHandler
+                               PROC
+
+
+
+ARM Macro Assembler    Page 7 
+
+
+  270 0000005A                 EXPORT           PIN_INT0_IRQHandler         [WE
+AK]
+  271 0000005A 482C            LDR              R0, =PIN_INT0_DriverIRQHandler
+  272 0000005C 4700            BX               R0
+  273 0000005E                 ENDP
+  274 0000005E         
+  276 0000005E         PIN_INT1_IRQHandler
+                               PROC
+  277 0000005E                 EXPORT           PIN_INT1_IRQHandler         [WE
+AK]
+  278 0000005E 482C            LDR              R0, =PIN_INT1_DriverIRQHandler
+  279 00000060 4700            BX               R0
+  280 00000062                 ENDP
+  281 00000062         
+  283 00000062         PIN_INT2_IRQHandler
+                               PROC
+  284 00000062                 EXPORT           PIN_INT2_IRQHandler         [WE
+AK]
+  285 00000062 482C            LDR              R0, =PIN_INT2_DriverIRQHandler
+  286 00000064 4700            BX               R0
+  287 00000066                 ENDP
+  288 00000066         
+  290 00000066         PIN_INT3_IRQHandler
+                               PROC
+  291 00000066                 EXPORT           PIN_INT3_IRQHandler         [WE
+AK]
+  292 00000066 482C            LDR              R0, =PIN_INT3_DriverIRQHandler
+  293 00000068 4700            BX               R0
+  294 0000006A                 ENDP
+  295 0000006A         
+  297 0000006A         OSC_INT_LOW_IRQHandler
+                               PROC
+  298 0000006A                 EXPORT           OSC_INT_LOW_IRQHandler       [W
+EAK]
+  299 0000006A 482C            LDR              R0, =OSC_INT_LOW_DriverIRQHandl
+er
+  300 0000006C 4700            BX               R0
+  301 0000006E                 ENDP
+  302 0000006E         
+  304 0000006E         USB0_IRQHandler
+                               PROC
+  305 0000006E                 EXPORT           USB0_IRQHandler              [W
+EAK]
+  306 0000006E 482C            LDR              R0, =USB0_DriverIRQHandler
+  307 00000070 4700            BX               R0
+  308 00000072                 ENDP
+  309 00000072         
+  311 00000072         FLEXCOMM0_IRQHandler
+                               PROC
+  312 00000072                 EXPORT           FLEXCOMM0_IRQHandler         [W
+EAK]
+  313 00000072 482C            LDR              R0, =FLEXCOMM0_DriverIRQHandler
+  314 00000074 4700            BX               R0
+  315 00000076                 ENDP
+  316 00000076         
+  318 00000076         FLEXCOMM1_IRQHandler
+                               PROC
+  319 00000076                 EXPORT           FLEXCOMM1_IRQHandler         [W
+EAK]
+
+
+
+ARM Macro Assembler    Page 8 
+
+
+  320 00000076 482C            LDR              R0, =FLEXCOMM1_DriverIRQHandler
+  321 00000078 4700            BX               R0
+  322 0000007A                 ENDP
+  323 0000007A         
+  325 0000007A         FLEXCOMM2_IRQHandler
+                               PROC
+  326 0000007A                 EXPORT           FLEXCOMM2_IRQHandler         [W
+EAK]
+  327 0000007A 482C            LDR              R0, =FLEXCOMM2_DriverIRQHandler
+  328 0000007C 4700            BX               R0
+  329 0000007E                 ENDP
+  330 0000007E         
+  332 0000007E         FLEXCOMM3_IRQHandler
+                               PROC
+  333 0000007E                 EXPORT           FLEXCOMM3_IRQHandler         [W
+EAK]
+  334 0000007E 482C            LDR              R0, =FLEXCOMM3_DriverIRQHandler
+  335 00000080 4700            BX               R0
+  336 00000082                 ENDP
+  337 00000082         
+  339 00000082         BLE_IRQHandler
+                               PROC
+  340 00000082                 EXPORT           BLE_IRQHandler               [W
+EAK]
+  341 00000082 482C            LDR              R0, =BLE_DriverIRQHandler
+  342 00000084 4700            BX               R0
+  343 00000086                 ENDP
+  344 00000086         
+  346 00000086         FSP_IRQHandler
+                               PROC
+  347 00000086                 EXPORT           FSP_IRQHandler               [W
+EAK]
+  348 00000086 482C            LDR              R0, =FSP_DriverIRQHandler
+  349 00000088 4700            BX               R0
+  350 0000008A                 ENDP
+  351 0000008A         
+  353 0000008A         QDEC0_IRQHandler
+                               PROC
+  354 0000008A                 EXPORT           QDEC0_IRQHandler             [W
+EAK]
+  355 0000008A 482C            LDR              R0, =QDEC0_DriverIRQHandler
+  356 0000008C 4700            BX               R0
+  357 0000008E                 ENDP
+  358 0000008E         
+  360 0000008E         QDEC1_IRQHandler
+                               PROC
+  361 0000008E                 EXPORT           QDEC1_IRQHandler             [W
+EAK]
+  362 0000008E 482C            LDR              R0, =QDEC1_DriverIRQHandler
+  363 00000090 4700            BX               R0
+  364 00000092                 ENDP
+  365 00000092         
+  367 00000092         CTIMER0_IRQHandler
+                               PROC
+  368 00000092                 EXPORT           CTIMER0_IRQHandler           [W
+EAK]
+  369 00000092 482C            LDR              R0, =CTIMER0_DriverIRQHandler
+  370 00000094 4700            BX               R0
+  371 00000096                 ENDP
+
+
+
+ARM Macro Assembler    Page 9 
+
+
+  372 00000096         
+  374 00000096         CTIMER1_IRQHandler
+                               PROC
+  375 00000096                 EXPORT           CTIMER1_IRQHandler           [W
+EAK]
+  376 00000096 482C            LDR              R0, =CTIMER1_DriverIRQHandler
+  377 00000098 4700            BX               R0
+  378 0000009A                 ENDP
+  379 0000009A         
+  381 0000009A         CTIMER2_IRQHandler
+                               PROC
+  382 0000009A                 EXPORT           CTIMER2_IRQHandler           [W
+EAK]
+  383 0000009A 482C            LDR              R0, =CTIMER2_DriverIRQHandler
+  384 0000009C 4700            BX               R0
+  385 0000009E                 ENDP
+  386 0000009E         
+  388 0000009E         CTIMER3_IRQHandler
+                               PROC
+  389 0000009E                 EXPORT           CTIMER3_IRQHandler           [W
+EAK]
+  390 0000009E 482C            LDR              R0, =CTIMER3_DriverIRQHandler
+  391 000000A0 4700            BX               R0
+  392 000000A2                 ENDP
+  393 000000A2         
+  395 000000A2         WDT_IRQHandler
+                               PROC
+  396 000000A2                 EXPORT           WDT_IRQHandler               [W
+EAK]
+  397 000000A2 482C            LDR              R0, =WDT_DriverIRQHandler
+  398 000000A4 4700            BX               R0
+  399 000000A6                 ENDP
+  400 000000A6         
+  402 000000A6         ADC_IRQHandler
+                               PROC
+  403 000000A6                 EXPORT           ADC_IRQHandler               [W
+EAK]
+  404 000000A6 482C            LDR              R0, =ADC_DriverIRQHandler
+  405 000000A8 4700            BX               R0
+  406 000000AA                 ENDP
+  407 000000AA         
+  409 000000AA         DAC_IRQHandler
+                               PROC
+  410 000000AA                 EXPORT           DAC_IRQHandler               [W
+EAK]
+  411 000000AA 482C            LDR              R0, =DAC_DriverIRQHandler
+  412 000000AC 4700            BX               R0
+  413 000000AE                 ENDP
+  414 000000AE         
+  416 000000AE         XTAL_READY_IRQHandler
+                               PROC
+  417 000000AE                 EXPORT           XTAL_READY_IRQHandler        [W
+EAK]
+  418 000000AE 482C            LDR              R0, =XTAL_READY_DriverIRQHandle
+r
+  419 000000B0 4700            BX               R0
+  420 000000B2                 ENDP
+  421 000000B2         
+  423 000000B2         FLASH_IRQHandler
+
+
+
+ARM Macro Assembler    Page 10 
+
+
+                               PROC
+  424 000000B2                 EXPORT           FLASH_IRQHandler             [W
+EAK]
+  425 000000B2 482C            LDR              R0, =FLASH_DriverIRQHandler
+  426 000000B4 4700            BX               R0
+  427 000000B6                 ENDP
+  428 000000B6         
+  430 000000B6         SPIFI0_IRQHandler
+                               PROC
+  431 000000B6                 EXPORT           SPIFI0_IRQHandler            [W
+EAK]
+  432 000000B6 482C            LDR              R0, =SPIFI0_DriverIRQHandler
+  433 000000B8 4700            BX               R0
+  434 000000BA                 ENDP
+  435 000000BA         
+  437 000000BA         SCT0_IRQHandler
+                               PROC
+  438 000000BA                 EXPORT           SCT0_IRQHandler              [W
+EAK]
+  439 000000BA 482C            LDR              R0, =SCT0_DriverIRQHandler
+  440 000000BC 4700            BX               R0
+  441 000000BE                 ENDP
+  442 000000BE         
+  444 000000BE         RTC_CAP_IRQHandler
+                               PROC
+  445 000000BE                 EXPORT           RTC_CAP_IRQHandler           [W
+EAK]
+  446 000000BE 482C            LDR              R0, =RTC_CAP_DriverIRQHandler
+  447 000000C0 4700            BX               R0
+  448 000000C2                 ENDP
+  449 000000C2         
+  451 000000C2         RNG_IRQHandler
+                               PROC
+  452 000000C2                 EXPORT           RNG_IRQHandler               [W
+EAK]
+  453 000000C2 482C            LDR              R0, =RNG_DriverIRQHandler
+  454 000000C4 4700            BX               R0
+  455 000000C6                 ENDP
+  456 000000C6         
+  458 000000C6         CALIB_IRQHandler
+                               PROC
+  459 000000C6                 EXPORT           CALIB_IRQHandler             [W
+EAK]
+  460 000000C6 482C            LDR              R0, =CALIB_DriverIRQHandler
+  461 000000C8 4700            BX               R0
+  462 000000CA                 ENDP
+  463 000000CA         
+  465 000000CA         BOD_IRQHandler
+                               PROC
+  466 000000CA                 EXPORT           BOD_IRQHandler               [W
+EAK]
+  467 000000CA 482C            LDR              R0, =BOD_DriverIRQHandler
+  468 000000CC 4700            BX               R0
+  469 000000CE                 ENDP
+  470 000000CE         
+  471 000000CE         Default_Handler
+                               PROC
+  472 000000CE                 EXPORT           EXT_GPIO_WAKEUP_DriverIRQHandle
+r     [WEAK]
+
+
+
+ARM Macro Assembler    Page 11 
+
+
+  473 000000CE                 EXPORT           OSC_DriverIRQHandler           
+      [WEAK]
+  474 000000CE                 EXPORT           ACMP0_DriverIRQHandler         
+      [WEAK]
+  475 000000CE                 EXPORT           ACMP1_DriverIRQHandler         
+      [WEAK]
+  476 000000CE                 EXPORT           RTC_SEC_DriverIRQHandler       
+      [WEAK]
+  477 000000CE                 EXPORT           RTC_FR_DriverIRQHandler        
+      [WEAK]
+  478 000000CE                 EXPORT           CS_WAKEUP_DriverIRQHandler     
+      [WEAK]
+  479 000000CE                 EXPORT           CS_DriverIRQHandler            
+      [WEAK]
+  480 000000CE                 EXPORT           GPIOA_DriverIRQHandler         
+      [WEAK]
+  481 000000CE                 EXPORT           GPIOB_DriverIRQHandler         
+      [WEAK]
+  482 000000CE                 EXPORT           DMA0_DriverIRQHandler          
+      [WEAK]
+  483 000000CE                 EXPORT           PIN_INT0_DriverIRQHandler      
+      [WEAK]
+  484 000000CE                 EXPORT           PIN_INT1_DriverIRQHandler      
+      [WEAK]
+  485 000000CE                 EXPORT           PIN_INT2_DriverIRQHandler      
+      [WEAK]
+  486 000000CE                 EXPORT           PIN_INT3_DriverIRQHandler      
+      [WEAK]
+  487 000000CE                 EXPORT           OSC_INT_LOW_DriverIRQHandler   
+      [WEAK]
+  488 000000CE                 EXPORT           USB0_DriverIRQHandler          
+      [WEAK]
+  489 000000CE                 EXPORT           FLEXCOMM0_DriverIRQHandler     
+      [WEAK]
+  490 000000CE                 EXPORT           FLEXCOMM1_DriverIRQHandler     
+      [WEAK]
+  491 000000CE                 EXPORT           FLEXCOMM2_DriverIRQHandler     
+      [WEAK]
+  492 000000CE                 EXPORT           FLEXCOMM3_DriverIRQHandler     
+      [WEAK]
+  493 000000CE                 EXPORT           BLE_DriverIRQHandler           
+      [WEAK]
+  494 000000CE                 EXPORT           FSP_DriverIRQHandler           
+      [WEAK]
+  495 000000CE                 EXPORT           QDEC0_DriverIRQHandler         
+      [WEAK]
+  496 000000CE                 EXPORT           QDEC1_DriverIRQHandler         
+      [WEAK]
+  497 000000CE                 EXPORT           CTIMER0_DriverIRQHandler       
+      [WEAK]
+  498 000000CE                 EXPORT           CTIMER1_DriverIRQHandler       
+      [WEAK]
+  499 000000CE                 EXPORT           CTIMER2_DriverIRQHandler       
+      [WEAK]
+  500 000000CE                 EXPORT           CTIMER3_DriverIRQHandler       
+      [WEAK]
+  501 000000CE                 EXPORT           WDT_DriverIRQHandler           
+      [WEAK]
+  502 000000CE                 EXPORT           ADC_DriverIRQHandler           
+
+
+
+ARM Macro Assembler    Page 12 
+
+
+      [WEAK]
+  503 000000CE                 EXPORT           DAC_DriverIRQHandler           
+      [WEAK]
+  504 000000CE                 EXPORT           XTAL_READY_DriverIRQHandler    
+      [WEAK]
+  505 000000CE                 EXPORT           FLASH_DriverIRQHandler         
+      [WEAK]
+  506 000000CE                 EXPORT           SPIFI0_DriverIRQHandler        
+      [WEAK]
+  507 000000CE                 EXPORT           SCT0_DriverIRQHandler          
+      [WEAK]
+  508 000000CE                 EXPORT           RTC_CAP_DriverIRQHandler       
+      [WEAK]
+  509 000000CE                 EXPORT           RNG_DriverIRQHandler           
+      [WEAK]
+  510 000000CE                 EXPORT           CALIB_DriverIRQHandler         
+      [WEAK]
+  511 000000CE                 EXPORT           BOD_DriverIRQHandler           
+      [WEAK]
+  512 000000CE         
+  513 000000CE         EXT_GPIO_WAKEUP_DriverIRQHandler
+  514 000000CE         OSC_DriverIRQHandler
+  515 000000CE         ACMP0_DriverIRQHandler
+  516 000000CE         ACMP1_DriverIRQHandler
+  517 000000CE         RTC_SEC_DriverIRQHandler
+  518 000000CE         RTC_FR_DriverIRQHandler
+  519 000000CE         CS_WAKEUP_DriverIRQHandler
+  520 000000CE         CS_DriverIRQHandler
+  521 000000CE         GPIOA_DriverIRQHandler
+  522 000000CE         GPIOB_DriverIRQHandler
+  523 000000CE         DMA0_DriverIRQHandler
+  524 000000CE         PIN_INT0_DriverIRQHandler
+  525 000000CE         PIN_INT1_DriverIRQHandler
+  526 000000CE         PIN_INT2_DriverIRQHandler
+  527 000000CE         PIN_INT3_DriverIRQHandler
+  528 000000CE         OSC_INT_LOW_DriverIRQHandler
+  529 000000CE         USB0_DriverIRQHandler
+  530 000000CE         FLEXCOMM0_DriverIRQHandler
+  531 000000CE         FLEXCOMM1_DriverIRQHandler
+  532 000000CE         FLEXCOMM2_DriverIRQHandler
+  533 000000CE         FLEXCOMM3_DriverIRQHandler
+  534 000000CE         BLE_DriverIRQHandler
+  535 000000CE         FSP_DriverIRQHandler
+  536 000000CE         QDEC0_DriverIRQHandler
+  537 000000CE         QDEC1_DriverIRQHandler
+  538 000000CE         CTIMER0_DriverIRQHandler
+  539 000000CE         CTIMER1_DriverIRQHandler
+  540 000000CE         CTIMER2_DriverIRQHandler
+  541 000000CE         CTIMER3_DriverIRQHandler
+  542 000000CE         WDT_DriverIRQHandler
+  543 000000CE         ADC_DriverIRQHandler
+  544 000000CE         DAC_DriverIRQHandler
+  545 000000CE         XTAL_READY_DriverIRQHandler
+  546 000000CE         FLASH_DriverIRQHandler
+  547 000000CE         SPIFI0_DriverIRQHandler
+  548 000000CE         SCT0_DriverIRQHandler
+  549 000000CE         RTC_CAP_DriverIRQHandler
+  550 000000CE         RNG_DriverIRQHandler
+  551 000000CE         CALIB_DriverIRQHandler
+
+
+
+ARM Macro Assembler    Page 13 
+
+
+  552 000000CE         BOD_DriverIRQHandler
+  553 000000CE         
+  554 000000CE         
+  555 000000CE E7FE            B                .
+  556 000000D0         
+  557 000000D0                 ENDP
+  558 000000D0         
+  559 000000D0         
+  560 000000D0                 ALIGN
+  561 000000D0         
+  562 000000D0         
+  563 000000D0                 END
+              40000014 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+Command Line: --debug --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=interwork 
+--depend=debug\startup_qn908x.d -odebug\startup_qn908x.o -I.\RTE\_ble_proxr_Deb
+ug -IC:\Keil_v5\ARM\PACK\Keil\QN908x_DFP\1.0.0\Device\Include -IC:\Keil_v5\ARM\
+
+
+
+ARM Macro Assembler    Page 14 
+
+
+CMSIS\Include --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SE
+TA 523" --predefine="QN90xx SETA 1" --list=.\output\startup_qn908x.lst ../../..
+/../../devices/QN908X/arm/startup_QN908X.s
