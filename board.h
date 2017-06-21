@@ -79,7 +79,7 @@
 #define BOARD_SW1_NAME "SW1"
 #define BOARD_SW2_GPIO_PIN 19U
 #define BOARD_SW2_NAME "SW2"
-#define BOARD_SW_NUM 2U
+#define BOARD_SW_NUM 1U
 
 /* Board led color mapping */
 #define LOGIC_LED_ON 1U
@@ -151,7 +151,8 @@
 #define BOARD_SW2_GPIO_PIN_MASK (1U << BOARD_SW2_GPIO_PIN)
 
 /* If GPIO wakeup feature is not needed, this macro should set to 0U */
-#define BOARD_WAKEUP_SW_MASK (BOARD_SW1_GPIO_PIN_MASK | BOARD_SW2_GPIO_PIN_MASK)
+//#define BOARD_WAKEUP_SW_MASK (BOARD_SW1_GPIO_PIN_MASK | BOARD_SW2_GPIO_PIN_MASK)
+#define BOARD_WAKEUP_SW_MASK BOARD_SW1_GPIO_PIN_MASK 
 
 #if defined(__cplusplus)
 extern "C" {

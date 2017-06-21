@@ -39,9 +39,10 @@
 
 static tm_timer_id_t s_buttonTimerID[BOARD_SW_NUM];
 
-static const uint32_t s_buttonGpioPin[BOARD_SW_NUM] = {BOARD_SW1_GPIO_PIN, BOARD_SW2_GPIO_PIN};
-static const uint32_t s_buttonGpioPinMask[BOARD_SW_NUM] = {BOARD_SW1_GPIO_PIN_MASK, BOARD_SW2_GPIO_PIN_MASK};
-
+//static const uint32_t s_buttonGpioPin[BOARD_SW_NUM] = {BOARD_SW1_GPIO_PIN, BOARD_SW2_GPIO_PIN};
+//static const uint32_t s_buttonGpioPinMask[BOARD_SW_NUM] = {BOARD_SW1_GPIO_PIN_MASK, BOARD_SW2_GPIO_PIN_MASK};
+static const uint32_t s_buttonGpioPin[BOARD_SW_NUM] = {BOARD_SW1_GPIO_PIN};
+static const uint32_t s_buttonGpioPinMask[BOARD_SW_NUM] = {BOARD_SW1_GPIO_PIN_MASK};
 /*******************************************************************************
  * Code
  ******************************************************************************/

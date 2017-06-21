@@ -51,7 +51,7 @@
 
 // Custom config HDINH
 #define ACCEL_INT_PIN           (18)
-#define USE_UART_DEBUG          (0)
+#define USE_UART_DEBUG          (1)
 #define ADV_INV_IN_SEC          (2)
 #define ADV_INV_INPUT           (ADV_INV_IN_SEC*1600)
 /*******************************************************************************
@@ -63,14 +63,13 @@
  ******************************************************************************/
 uint8_t s_usrCharCode;
 uint8_t s_usrAlertLvl;
-volatile uint8_t wakeupCountNazzz = 0;
 /*******************************************************************************
  * Code
  ******************************************************************************/
 void BOARD_WakeupRestore(void)
 {
     BUTTON_EnableInterrupt();
-    wakeupCountNazzz++;
+#if USE_UART_DEBUG
     /*
      * config.baudRate_Bps = 115200U;
      * config.parityMode = kUART_ParityDisabled;
@@ -85,7 +84,7 @@ void BOARD_WakeupRestore(void)
     config.enableTx = true;
     config.enableRx = true;
     USART_Init(DEMO_USART, &config, DEMO_USART_CLK_FREQ);
-    
+#endif
     accel_spi_init();
 }
 
@@ -104,7 +103,9 @@ int main(void)
 
     BOARD_InitPins();
     BOARD_BootClockRUN();
+#if USE_UART_DEBUG
     BOARD_InitDebugConsole();
+#endif
 
     /* Shut down higher 64K RAM for lower power consumption */
     POWER_EnablePD(kPDRUNCFG_PD_MEM9);
@@ -167,12 +168,10 @@ void APP_GapSetDevCfgCallback(void)
 }
 
 void APP_BleReadyCallback(void)
-{
-    QPRINTF("QN ble ready\r\n");
-
+{   
 #if defined(CFG_APP_AUTO)
-    APP_GapmStartAdvertiseCmd(GAPM_ADV_UNDIRECT, GAPM_STATIC_ADDR, GAP_GEN_DISCOVERABLE, CFG_ADV_INT_MIN,
-                                 CFG_ADV_INT_MAX, g_AppEnv.adv_data_len, g_AppEnv.adv_data, g_AppEnv.scan_rsp_data_len,
+    APP_GapmStartAdvertiseCmd(GAPM_ADV_UNDIRECT, GAPM_STATIC_ADDR, GAP_GEN_DISCOVERABLE, ADV_INV_INPUT,
+                                 ADV_INV_INPUT, g_AppEnv.adv_data_len, g_AppEnv.adv_data, g_AppEnv.scan_rsp_data_len,
                                  g_AppEnv.scan_rsp_data, NULL);
 #endif
 }
@@ -243,13 +242,7 @@ void APP_ButtonDownCallback(uint32_t pin_mask)
 {
     if (pin_mask & BOARD_SW1_GPIO_PIN_MASK)
     {
-        QPRINTF("WTM interrupt\n");
-        //accel_wtm_int_handler();
-    }
-
-    if (pin_mask & BOARD_SW2_GPIO_PIN_MASK)
-    {
-        //APP_ProxrStopAlert();
+        accel_wtm_int_handler();
     }
 }
 
