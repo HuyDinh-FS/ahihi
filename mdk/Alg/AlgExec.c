@@ -27,20 +27,20 @@
 #include "GoalTracking.h"
 #include "DownSample.h"
 #include "AlgExec.h"
-#include "File_Writer.h"
-#include "Stream_Data.h"
-#include "config.h"
-#include "wsf_types.h"
-#include "wsf_os.h"
-#include "dm_api.h"
-#include "att_api.h"
-#include "mp_defs.h"
-#include "mpsa_main.h"
+//#include "File_Writer.h"
+//#include "Stream_Data.h"
+//#include "config.h"
+//#include "wsf_types.h"
+//#include "wsf_os.h"
+//#include "dm_api.h"
+//#include "att_api.h"
+//#include "mp_defs.h"
+//#include "mpsa_main.h"
 #include "TapHandler.h"
-#include "File_Normal_Entry.h"
-#include "Minute_Data_Converter.h"
-#include "ActivityTagging.h"
-#include "timer.h"
+//#include "File_Normal_Entry.h"
+//#include "Minute_Data_Converter.h"
+//#include "ActivityTagging.h"
+//#include "timer.h"
 //#include "button_lib.h"   //TODO: Remove after no longer using for temporary activity tagging
 
 
@@ -77,8 +77,8 @@ typedef struct
 		real_t algWindowMemory[N_ACCEL_AXES][SC_ALG_MAX_WINDOW_LENGTH];  //holds pAxis for the algorithm window (currently 4bytes*3*75 = 900 bytes)
   real_t *pAxis[N_ACCEL_AXES]; //points to each row (axis) of the algWindowMemory 2-D array
   
-  tag_state_t newTagState;
-  tag_state_t currentTagState;
+  //tag_state_t newTagState;
+  //tag_state_t currentTagState;
   bool        userTaggedOut;
   uint32_t    samplesSinceLastSwimLap;
   
@@ -180,7 +180,7 @@ void Alg_Exec(void)
       SC_AggregateMinute(&summary);
       
       //Handle minute-by-minute processing here!!
-      fe_normal_t entryWritten;
+      //fe_normal_t entryWritten;
       
 #if CONFIG_USE_BUTTON
       FileWriter_WriteStepsAndPoints(&summary, 0, 0, &entryWritten);
@@ -274,22 +274,22 @@ void Alg_Init(void)
   }
   AlgCntrl.processedSampleIdx = 1;
   AlgCntrl.lastProcessedMinute = AccelBuffer_GetCurrentMinuteSample();
-  AlgCntrl.currentTagState = TAG_STATE_OUT;
-  AlgCntrl.newTagState = TAG_STATE_OUT;
+  //AlgCntrl.currentTagState = TAG_STATE_OUT;
+  //AlgCntrl.newTagState = TAG_STATE_OUT;
   AlgCntrl.userTaggedOut = false;
   AlgCntrl.samplesSinceLastSwimLap = 0;
 }
 
 void Alg_NotifyTagIn(void)
 {
-  AlgCntrl.newTagState = TAG_STATE_IN;
+  //AlgCntrl.newTagState = TAG_STATE_IN;
   AlgCntrl.userTaggedOut = false;
   AlgCntrl.samplesSinceLastSwimLap = 0;
 }
 
 void Alg_NotifyTagOut(bool user_tag_out)
 {
-  AlgCntrl.newTagState = TAG_STATE_OUT;
+  //AlgCntrl.newTagState = TAG_STATE_OUT;
   AlgCntrl.userTaggedOut = user_tag_out;
 }
 

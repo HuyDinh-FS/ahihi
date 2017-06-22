@@ -23,7 +23,7 @@
 //#include "hw_logger.h"
 //#include "config.h"
 //#include "bond_storage.h"
-#include "setting_items.h"
+//#include "setting_items.h"
 //#include "misfit_events.h"
 //#include "Goal_Animation_Module.h"
 
@@ -177,8 +177,8 @@ void GoalTracker_GoalRecover(void)
   
   // Get goal in steps and goal in points from flash memory, format: first word is goal in points, second word is goal in stepss
   //BondStorage_GetGoal((uint8_t *)goals_steps_points, sizeof(goals_steps_points));
-  get_setting(&device_settings.goal_in_point, (uint8_t*)&goals_steps_points[0], sizeof(uint32_t));
-  get_setting(&device_settings.goal_in_step, (uint8_t*)&goals_steps_points[1], sizeof(uint32_t));
+  //get_setting(&device_settings.goal_in_point, (uint8_t*)&goals_steps_points[0], sizeof(uint32_t));
+  //get_setting(&device_settings.goal_in_step, (uint8_t*)&goals_steps_points[1], sizeof(uint32_t));
   
   /* Sanity check for each goal */
   uint8_t len = sizeof(goals_steps_points) / sizeof(uint32_t);
@@ -279,10 +279,10 @@ void GoalTracker_SetGoalInPoints(uint32_t goalToSet)
     
     // Write new goal to flash memory
     //goaltracking_SaveGoalsToFlash();
-    if (set_setting(&device_settings.goal_in_point, (uint8_t*)&goalToSet, sizeof(uint32_t)))
-    {
+    //if (set_setting(&device_settings.goal_in_point, (uint8_t*)&goalToSet, sizeof(uint32_t)))
+    //{
       // fail to update, need to do somthing here
-    }
+    //}
   }
   
 }
@@ -415,10 +415,10 @@ void GoalTracker_SetGoalInSteps(uint32_t goalToSet)
     
     // Write to flash memory if allow to use step concept
     //goaltracking_SaveGoalsToFlash();
-    if (set_setting(&device_settings.goal_in_step, (uint8_t*)&goalToSet, sizeof(uint32_t)))
-    {
+    //if (set_setting(&device_settings.goal_in_step, (uint8_t*)&goalToSet, sizeof(uint32_t)))
+    //{
       // fail to update, need to do somthing here
-    }
+    //}
   }
 }
 
@@ -537,7 +537,7 @@ uint32_t GoalTracker_GetPercentToday(void)
   if ( (Goal_Percent_Threshold <= percent_today) && (Goal_Percent_Threshold > Last_Percent_Today)
       && (UINT32_MAX != Last_Percent_Today) && Goal_Percent_Threshold <= 100)
   {
-    msf_events_set_event(MSF_EVENT_PROGRESS_GOAL_MET);
+    //msf_events_set_event(MSF_EVENT_PROGRESS_GOAL_MET);
     Percent_For_Goal_Animation = Goal_Percent_Threshold;
   }
   
@@ -645,7 +645,7 @@ void GoalTracker_AddSteps(uint32_t steps)
 void GoalTracker_GoalMet_Event(void *p_event_data, uint16_t event_size)
 {
   // Call goal animation function
-  Start_Goal_Animation(Percent_For_Goal_Animation);
+  //Start_Goal_Animation(Percent_For_Goal_Animation);
 }
 
 //###########################################################################################################

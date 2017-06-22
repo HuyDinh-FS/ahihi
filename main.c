@@ -45,6 +45,8 @@
 #include "uart_adapter.h"
 #include "adxl362_accel.h"
 #include "TapHandler.h"
+#include "AlgExec.h"
+#include "StepCount.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -133,6 +135,8 @@ int main(void)
     BUTTON_SetGpioWakeupLevel(BOARD_SW_GPIO, BOARD_SW1_GPIO_PIN, 1U);
     adxl362_accel_config_and_init();
     TapHandler_Init();
+    SC_Init();
+    Alg_Init();
     accelInit();
 
     BLE_Init();
