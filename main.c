@@ -43,6 +43,8 @@
 #include "fsl_clock.h"
 #include "fsl_usart.h"
 #include "uart_adapter.h"
+#include "adxl362_accel.h"
+#include "TapHandler.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -129,6 +131,8 @@ int main(void)
 
     BUTTON_Init();
     BUTTON_SetGpioWakeupLevel(BOARD_SW_GPIO, BOARD_SW1_GPIO_PIN, 1U);
+    adxl362_accel_config_and_init();
+    TapHandler_Init();
     accelInit();
 
     BLE_Init();
@@ -242,7 +246,10 @@ void APP_ButtonDownCallback(uint32_t pin_mask)
 {
     if (pin_mask & BOARD_SW1_GPIO_PIN_MASK)
     {
-        accel_wtm_int_handler();
+        while (GPIO_ReadPinInput(GPIOA, ACCEL_INT_PIN))
+        {
+            adxl362_WtmIsr();
+        }
     }
 }
 

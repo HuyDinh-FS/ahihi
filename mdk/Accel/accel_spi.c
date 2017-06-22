@@ -43,7 +43,7 @@ void accelInit(void)
     accel_spi_init();
     accelPowerInit();
     accel_SelfTest();
-    //accel_ChipInit();
+    accel_ChipInit();
 }
 
 static void accelPowerInit(void)
@@ -58,8 +58,8 @@ void accel_wtm_int_handler()
     volatile uint8_t i = 0;
     spi_transfer_t transferConfig = {0};
     
-    NVIC_DisableIRQ(EXT_GPIO_WAKEUP_IRQn);
-    NVIC_ClearPendingIRQ(EXT_GPIO_WAKEUP_IRQn);
+    //NVIC_DisableIRQ(EXT_GPIO_WAKEUP_IRQn);
+    //NVIC_ClearPendingIRQ(EXT_GPIO_WAKEUP_IRQn);
     
 #if USE_DMA_SPI_ACCEL
     //memset(cmd,0xAA, SIZE_OF_ACCEL_BUFFER*sizeof(uint32_t));
@@ -96,8 +96,8 @@ void accel_wtm_int_handler()
 
 void wtm_tx_callback(void *user_data, uint16_t transferred)
 {
-    NVIC_ClearPendingIRQ(EXT_GPIO_WAKEUP_IRQn);
-    NVIC_EnableIRQ(EXT_GPIO_WAKEUP_IRQn);
+    //NVIC_ClearPendingIRQ(EXT_GPIO_WAKEUP_IRQn);
+    //NVIC_EnableIRQ(EXT_GPIO_WAKEUP_IRQn);
 }
 
 int16_t getAccelSample(int16_t raw_accel_data)

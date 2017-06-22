@@ -8,7 +8,7 @@
 #ifndef ACCEL_ACCEL_SPI_H_
 #define ACCEL_ACCEL_SPI_H_
 
-#define USE_ADXL362 1
+#define USE_ADXL362                     1
 
 #define ACCEL_USE_FIFO
 
@@ -17,7 +17,7 @@
 
 #include <stdint.h>
 
-#define USE_DMA_SPI_ACCEL						0
+#define USE_DMA_SPI_ACCEL               0
 #define USE_NONBLOCKING_SPI_ACCEL		0
 
 extern void accelInit(void);
