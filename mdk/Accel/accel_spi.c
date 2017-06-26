@@ -41,15 +41,25 @@ static int16_t getAccelSample(int16_t raw_accel_data);
 void accelInit(void)
 {
     accel_spi_init();
-    accelPowerInit();
+    //accelPowerInit();
     accel_SelfTest();
     accel_ChipInit();
 }
 
 static void accelPowerInit(void)
 {
-    //accel_power_off();
-    //accel_power_on();
+    uint32_t i = 0;
+    accel_power_off();
+    while (i < 300000)
+    {
+        i++;
+    }
+    accel_power_on();
+    i = 0;
+    while (i < 300000)
+    {
+        i++;
+    }
 }
 
 void accel_wtm_int_handler()

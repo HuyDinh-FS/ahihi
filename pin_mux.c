@@ -48,7 +48,7 @@ void BOARD_InitPins(void)
 
     /* IO pull control (00:High-Z, 01:Pull-down, 10:Pull-up, 11:Reserved) */
     SYSCON->PIO_PULL_CFG0 = 0xAAAAAAAA;
-    SYSCON->PIO_PULL_CFG1 = 0xAAAA9A9A; /* PA22 pull-down for swd clk */ //PA 18 High-Z for Accel Interrupt
+    SYSCON->PIO_PULL_CFG1 = 0xAAAA9A8A; /* PA22 pull-down for swd clk */ //PA 18 High-Z for Accel Interrupt
     SYSCON->PIO_PULL_CFG2 = 0x0000002A;
 }
 

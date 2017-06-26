@@ -56,7 +56,7 @@
 // Custom config HDINH
 #define ACCEL_INT_PIN           (18)
 #define USE_UART_DEBUG          (1)
-#define ADV_INV_IN_SEC          (2)
+#define ADV_INV_IN_SEC          (1)
 #define ADV_INV_INPUT           (ADV_INV_IN_SEC*1600)
 /*******************************************************************************
  * Prototypes
@@ -89,7 +89,6 @@ void BOARD_WakeupRestore(void)
     config.enableRx = true;
     USART_Init(DEMO_USART, &config, DEMO_USART_CLK_FREQ);
 #endif
-    accel_spi_init();
 }
 
 
@@ -250,10 +249,11 @@ void APP_ButtonDownCallback(uint32_t pin_mask)
 {
     if (pin_mask & BOARD_SW1_GPIO_PIN_MASK)
     {
-        while (GPIO_ReadPinInput(GPIOA, ACCEL_INT_PIN))
-        {
+        //while (GPIO_ReadPinInput(GPIOA, ACCEL_INT_PIN))
+        //{
+            accel_spi_init();
             adxl362_WtmIsr();
-        }
+        //}
     }
 }
 

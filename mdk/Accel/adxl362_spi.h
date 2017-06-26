@@ -14,7 +14,7 @@
 // DEFINED CONSTANTS
 //#######################################################################################
 
-#define ACCEL_DATA_RATE_HZ                    ODR_200Hz   //ODR_100Hz  //ODR_50Hz   //ODR_25Hz
+#define ACCEL_DATA_RATE_HZ                    ODR_100Hz //ODR_200Hz   //ODR_100Hz  //ODR_50Hz   //ODR_25Hz
 #define ADXL362_INITIAL_POWER_MODE            NORMAL      //POWER_DOWN
 #define ADXL362_FULLSCALE_RANGE               FULLSCALE_4
 #define ADXL362_FILTER_BW                     ADXL362_BW_FILTER_HALF

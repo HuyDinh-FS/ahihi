@@ -339,7 +339,7 @@
 </MiscControls>
               <Define>DEBUG, CFG_BLE_PRJ, CPU_QN908X, CFG_WM_SOC</Define>
               <Undefine></Undefine>
-              <IncludePath>..;../../../../../devices/QN908X/utilities;../../../../../CMSIS/Include;../../../../../devices;../../../../../devices/QN908X;../../../../../devices/QN908X/drivers;../../..;../../../../../middleware/ble/modules/app/api;../../../../../middleware/ble/ip/ble/hl/inc;../inc;../../../../../middleware/ble/ip;../../../../../middleware/ble/ip/ahi/api;../../../../../middleware/ble/ip/ahi/src;../../../../../middleware/ble/ip/ble/hl/api;../../../../../middleware/ble/ip/ble/hl/src/gap;../../../../../middleware/ble/ip/ble/hl/src/gap/gapc;../../../../../middleware/ble/ip/ble/hl/src/gap/gapm;../../../../../middleware/ble/ip/ble/hl/src/gap/smpc;../../../../../middleware/ble/ip/ble/hl/src/gap/smpm;../../../../../middleware/ble/ip/ble/hl/src/gatt;../../../../../middleware/ble/ip/ble/hl/src/gatt/attc;../../../../../middleware/ble/ip/ble/hl/src/gatt/attm;../../../../../middleware/ble/ip/ble/hl/src/gatt/atts;../../../../../middleware/ble/ip/ble/hl/src/gatt/gattc;../../../../../middleware/ble/ip/ble/hl/src/gatt/gattm;../../../../../middleware/ble/ip/ble/hl/src/l2c/l2cc;../../../../../middleware/ble/ip/ble/hl/src/l2c/l2cm;../../../../../middleware/ble/ip/ble/hl/src/prf;../../../../../middleware/ble/ip/ble/hl/src/rwble_hl;../../../../../middleware/ble/ip/ble/ll/src/em;../../../../../middleware/ble/ip/ble/ll/src/llc;../../../../../middleware/ble/ip/ble/ll/src/lld;../../../../../middleware/ble/ip/ble/ll/src/llm;../../../../../middleware/ble/ip/ble/ll/src/rwble;../../../../../middleware/ble/ip/ea/api;../../../../../middleware/ble/ip/em/api;../../../../../middleware/ble/ip/hci/api;../../../../../middleware/ble/ip/hci/src;../../../../../middleware/ble/ip/reg;../../../../../middleware/ble/modules/common/api;../../../../../middleware/ble/modules/dbg/api;../../../../../middleware/ble/modules/display/api;../../../../../middleware/ble/modules/display/src;../../../../../middleware/ble/modules/ecc_p256/api;../../../../../middleware/ble/modules/h4tl/api;../../../../../middleware/ble/modules/ke/api;../../../../../middleware/ble/modules/ke/src;../../../../../middleware/ble/modules/nvds/api;../../../../../middleware/ble/modules/rf/api;../../../../../middleware/ble/modules/rwip/api;../../../../../middleware/ble/libs;../../../../../middleware/ble/modules/app/src;../../../../../middleware/ble/ip/ble/profiles;../../../../../middleware/ble/ip/ble/profiles/anp;../../../../../middleware/ble/ip/ble/profiles/anp/anpc/api;../../../../../middleware/ble/ip/ble/profiles/anp/anpc/src;../../../../../middleware/ble/ip/ble/profiles/anp/anps/api;../../../../../middleware/ble/ip/ble/profiles/anp/anps/src;../../../../../middleware/ble/ip/ble/profiles/bas/basc/api;../../../../../middleware/ble/ip/ble/profiles/bas/basc/src;../../../../../middleware/ble/ip/ble/profiles/bas/bass/api;../../../../../middleware/ble/ip/ble/profiles/bas/bass/src;../../../../../middleware/ble/ip/ble/profiles/blp;../../../../../middleware/ble/ip/ble/profiles/blp/blpc/api;../../../../../middleware/ble/ip/ble/profiles/blp/blpc/src;../../../../../middleware/ble/ip/ble/profiles/blp/blps/api;../../../../../middleware/ble/ip/ble/profiles/blp/blps/src;../../../../../middleware/ble/ip/ble/profiles/cpp;../../../../../middleware/ble/ip/ble/profiles/cpp/cppc/api;../../../../../middleware/ble/ip/ble/profiles/cpp/cppc/src;../../../../../middleware/ble/ip/ble/profiles/cpp/cpps/api;../../../../../middleware/ble/ip/ble/profiles/cpp/cpps/src;../../../../../middleware/ble/ip/ble/profiles/cscp;../../../../../middleware/ble/ip/ble/profiles/cscp/cscpc/api;../../../../../middleware/ble/ip/ble/profiles/cscp/cscpc/src;../../../../../middleware/ble/ip/ble/profiles/cscp/cscps/api;../../../../../middleware/ble/ip/ble/profiles/cscp/cscps/src;../../../../../middleware/ble/ip/ble/profiles/dis/disc/api;../../../../../middleware/ble/ip/ble/profiles/dis/disc/src;../../../../../middleware/ble/ip/ble/profiles/dis/diss/api;../../../../../middleware/ble/ip/ble/profiles/dis/diss/src;../../../../../middleware/ble/ip/ble/profiles/find;../../../../../middleware/ble/ip/ble/profiles/find/findl/api;../../../../../middleware/ble/ip/ble/profiles/find/findl/src;../../../../../middleware/ble/ip/ble/profiles/find/findt/api;../../../../../middleware/ble/ip/ble/profiles/find/findt/src;../../../../../middleware/ble/ip/ble/profiles/glp;../../../../../middleware/ble/ip/ble/profiles/glp/glpc/api;../../../../../middleware/ble/ip/ble/profiles/glp/glpc/src;../../../../../middleware/ble/ip/ble/profiles/glp/glps/api;../../../../../middleware/ble/ip/ble/profiles/glp/glps/src;../../../../../middleware/ble/ip/ble/profiles/hogp;../../../../../middleware/ble/ip/ble/profiles/hogp/hogpbh/api;../../../../../middleware/ble/ip/ble/profiles/hogp/hogpbh/src;../../../../../middleware/ble/ip/ble/profiles/hogp/hogpd/api;../../../../../middleware/ble/ip/ble/profiles/hogp/hogpd/src;../../../../../middleware/ble/ip/ble/profiles/hogp/hogprh/api;../../../../../middleware/ble/ip/ble/profiles/hogp/hogprh/src;../../../../../middleware/ble/ip/ble/profiles/hrp;../../../../../middleware/ble/ip/ble/profiles/hrp/hrpc/api;../../../../../middleware/ble/ip/ble/profiles/hrp/hrpc/src;../../../../../middleware/ble/ip/ble/profiles/hrp/hrps/api;../../../../../middleware/ble/ip/ble/profiles/hrp/hrps/src;../../../../../middleware/ble/ip/ble/profiles/htp;../../../../../middleware/ble/ip/ble/profiles/htp/htpc/api;../../../../../middleware/ble/ip/ble/profiles/htp/htpc/src;../../../../../middleware/ble/ip/ble/profiles/htp/htpt/api;../../../../../middleware/ble/ip/ble/profiles/htp/htpt/src;../../../../../middleware/ble/ip/ble/profiles/lan;../../../../../middleware/ble/ip/ble/profiles/lan/lanc/api;../../../../../middleware/ble/ip/ble/profiles/lan/lanc/src;../../../../../middleware/ble/ip/ble/profiles/lan/lans/api;../../../../../middleware/ble/ip/ble/profiles/lan/lans/src;../../../../../middleware/ble/ip/ble/profiles/pasp;../../../../../middleware/ble/ip/ble/profiles/pasp/paspc/api;../../../../../middleware/ble/ip/ble/profiles/pasp/paspc/src;../../../../../middleware/ble/ip/ble/profiles/pasp/pasps/api;../../../../../middleware/ble/ip/ble/profiles/pasp/pasps/src;../../../../../middleware/ble/ip/ble/profiles/prox/proxm/api;../../../../../middleware/ble/ip/ble/profiles/prox/proxm/src;../../../../../middleware/ble/ip/ble/profiles/prox/proxr/api;../../../../../middleware/ble/ip/ble/profiles/prox/proxr/src;../../../../../middleware/ble/ip/ble/profiles/qpp;../../../../../middleware/ble/ip/ble/profiles/qpp/qppc/api;../../../../../middleware/ble/ip/ble/profiles/qpp/qppc/src;../../../../../middleware/ble/ip/ble/profiles/qpp/qpps/api;../../../../../middleware/ble/ip/ble/profiles/qpp/qpps/src;../../../../../middleware/ble/ip/ble/profiles/rscp;../../../../../middleware/ble/ip/ble/profiles/rscp/rscpc/api;../../../../../middleware/ble/ip/ble/profiles/rscp/rscpc/src;../../../../../middleware/ble/ip/ble/profiles/rscp/rscps/api;../../../../../middleware/ble/ip/ble/profiles/rscp/rscps/src;../../../../../middleware/ble/ip/ble/profiles/scpp;../../../../../middleware/ble/ip/ble/profiles/scpp/scppc/api;../../../../../middleware/ble/ip/ble/profiles/scpp/scppc/src;../../../../../middleware/ble/ip/ble/profiles/scpp/scpps/api;../../../../../middleware/ble/ip/ble/profiles/scpp/scpps/src;../../../../../middleware/ble/ip/ble/profiles/tip;../../../../../middleware/ble/ip/ble/profiles/tip/tipc/api;../../../../../middleware/ble/ip/ble/profiles/tip/tipc/src;../../../../../middleware/ble/ip/ble/profiles/tip/tips/api;../../../../../middleware/ble/ip/ble/profiles/tip/tips/src;../../../../../middleware/ble/ip/ble/profiles/yell;../../../../../middleware/ble/ip/ble/profiles/yell/yells/api;../../../../../middleware/ble/ip/ble/profiles/yell/yells/src;../../../../../middleware/ble/modules/timer_manager/api;../../../../../middleware/ble/modules/power_manager/api;../../../../../middleware/ble/modules/eif_adapter/api;../../../../../middleware/ble/modules/eif_adapter/src/uart_adapter;../../../../../middleware/ble/modules/eif_adapter/src/usb_vcom_adapter;../../../../../middleware/usb_1.0.2;../../../../../middleware/usb_1.0.2/include;../../../../../middleware/usb_1.0.2/device;../../../../../middleware/usb_1.0.2/osa;../../../../../middleware/usb_1.0.2/device/class;.\Accel</IncludePath>
+              <IncludePath>..;../../../../../devices/QN908X/utilities;../../../../../CMSIS/Include;../../../../../devices;../../../../../devices/QN908X;../../../../../devices/QN908X/drivers;../../..;../../../../../middleware/ble/modules/app/api;../../../../../middleware/ble/ip/ble/hl/inc;../inc;../../../../../middleware/ble/ip;../../../../../middleware/ble/ip/ahi/api;../../../../../middleware/ble/ip/ahi/src;../../../../../middleware/ble/ip/ble/hl/api;../../../../../middleware/ble/ip/ble/hl/src/gap;../../../../../middleware/ble/ip/ble/hl/src/gap/gapc;../../../../../middleware/ble/ip/ble/hl/src/gap/gapm;../../../../../middleware/ble/ip/ble/hl/src/gap/smpc;../../../../../middleware/ble/ip/ble/hl/src/gap/smpm;../../../../../middleware/ble/ip/ble/hl/src/gatt;../../../../../middleware/ble/ip/ble/hl/src/gatt/attc;../../../../../middleware/ble/ip/ble/hl/src/gatt/attm;../../../../../middleware/ble/ip/ble/hl/src/gatt/atts;../../../../../middleware/ble/ip/ble/hl/src/gatt/gattc;../../../../../middleware/ble/ip/ble/hl/src/gatt/gattm;../../../../../middleware/ble/ip/ble/hl/src/l2c/l2cc;../../../../../middleware/ble/ip/ble/hl/src/l2c/l2cm;../../../../../middleware/ble/ip/ble/hl/src/prf;../../../../../middleware/ble/ip/ble/hl/src/rwble_hl;../../../../../middleware/ble/ip/ble/ll/src/em;../../../../../middleware/ble/ip/ble/ll/src/llc;../../../../../middleware/ble/ip/ble/ll/src/lld;../../../../../middleware/ble/ip/ble/ll/src/llm;../../../../../middleware/ble/ip/ble/ll/src/rwble;../../../../../middleware/ble/ip/ea/api;../../../../../middleware/ble/ip/em/api;../../../../../middleware/ble/ip/hci/api;../../../../../middleware/ble/ip/hci/src;../../../../../middleware/ble/ip/reg;../../../../../middleware/ble/modules/common/api;../../../../../middleware/ble/modules/dbg/api;../../../../../middleware/ble/modules/display/api;../../../../../middleware/ble/modules/display/src;../../../../../middleware/ble/modules/ecc_p256/api;../../../../../middleware/ble/modules/h4tl/api;../../../../../middleware/ble/modules/ke/api;../../../../../middleware/ble/modules/ke/src;../../../../../middleware/ble/modules/nvds/api;../../../../../middleware/ble/modules/rf/api;../../../../../middleware/ble/modules/rwip/api;../../../../../middleware/ble/libs;../../../../../middleware/ble/modules/app/src;../../../../../middleware/ble/ip/ble/profiles;../../../../../middleware/ble/ip/ble/profiles/anp;../../../../../middleware/ble/ip/ble/profiles/anp/anpc/api;../../../../../middleware/ble/ip/ble/profiles/anp/anpc/src;../../../../../middleware/ble/ip/ble/profiles/anp/anps/api;../../../../../middleware/ble/ip/ble/profiles/anp/anps/src;../../../../../middleware/ble/ip/ble/profiles/bas/basc/api;../../../../../middleware/ble/ip/ble/profiles/bas/basc/src;../../../../../middleware/ble/ip/ble/profiles/bas/bass/api;../../../../../middleware/ble/ip/ble/profiles/bas/bass/src;../../../../../middleware/ble/ip/ble/profiles/blp;../../../../../middleware/ble/ip/ble/profiles/blp/blpc/api;../../../../../middleware/ble/ip/ble/profiles/blp/blpc/src;../../../../../middleware/ble/ip/ble/profiles/blp/blps/api;../../../../../middleware/ble/ip/ble/profiles/blp/blps/src;../../../../../middleware/ble/ip/ble/profiles/cpp;../../../../../middleware/ble/ip/ble/profiles/cpp/cppc/api;../../../../../middleware/ble/ip/ble/profiles/cpp/cppc/src;../../../../../middleware/ble/ip/ble/profiles/cpp/cpps/api;../../../../../middleware/ble/ip/ble/profiles/cpp/cpps/src;../../../../../middleware/ble/ip/ble/profiles/cscp;../../../../../middleware/ble/ip/ble/profiles/cscp/cscpc/api;../../../../../middleware/ble/ip/ble/profiles/cscp/cscpc/src;../../../../../middleware/ble/ip/ble/profiles/cscp/cscps/api;../../../../../middleware/ble/ip/ble/profiles/cscp/cscps/src;../../../../../middleware/ble/ip/ble/profiles/dis/disc/api;../../../../../middleware/ble/ip/ble/profiles/dis/disc/src;../../../../../middleware/ble/ip/ble/profiles/dis/diss/api;../../../../../middleware/ble/ip/ble/profiles/dis/diss/src;../../../../../middleware/ble/ip/ble/profiles/find;../../../../../middleware/ble/ip/ble/profiles/find/findl/api;../../../../../middleware/ble/ip/ble/profiles/find/findl/src;../../../../../middleware/ble/ip/ble/profiles/find/findt/api;../../../../../middleware/ble/ip/ble/profiles/find/findt/src;../../../../../middleware/ble/ip/ble/profiles/glp;../../../../../middleware/ble/ip/ble/profiles/glp/glpc/api;../../../../../middleware/ble/ip/ble/profiles/glp/glpc/src;../../../../../middleware/ble/ip/ble/profiles/glp/glps/api;../../../../../middleware/ble/ip/ble/profiles/glp/glps/src;../../../../../middleware/ble/ip/ble/profiles/hogp;../../../../../middleware/ble/ip/ble/profiles/hogp/hogpbh/api;../../../../../middleware/ble/ip/ble/profiles/hogp/hogpbh/src;../../../../../middleware/ble/ip/ble/profiles/hogp/hogpd/api;../../../../../middleware/ble/ip/ble/profiles/hogp/hogpd/src;../../../../../middleware/ble/ip/ble/profiles/hogp/hogprh/api;../../../../../middleware/ble/ip/ble/profiles/hogp/hogprh/src;../../../../../middleware/ble/ip/ble/profiles/hrp;../../../../../middleware/ble/ip/ble/profiles/hrp/hrpc/api;../../../../../middleware/ble/ip/ble/profiles/hrp/hrpc/src;../../../../../middleware/ble/ip/ble/profiles/hrp/hrps/api;../../../../../middleware/ble/ip/ble/profiles/hrp/hrps/src;../../../../../middleware/ble/ip/ble/profiles/htp;../../../../../middleware/ble/ip/ble/profiles/htp/htpc/api;../../../../../middleware/ble/ip/ble/profiles/htp/htpc/src;../../../../../middleware/ble/ip/ble/profiles/htp/htpt/api;../../../../../middleware/ble/ip/ble/profiles/htp/htpt/src;../../../../../middleware/ble/ip/ble/profiles/lan;../../../../../middleware/ble/ip/ble/profiles/lan/lanc/api;../../../../../middleware/ble/ip/ble/profiles/lan/lanc/src;../../../../../middleware/ble/ip/ble/profiles/lan/lans/api;../../../../../middleware/ble/ip/ble/profiles/lan/lans/src;../../../../../middleware/ble/ip/ble/profiles/pasp;../../../../../middleware/ble/ip/ble/profiles/pasp/paspc/api;../../../../../middleware/ble/ip/ble/profiles/pasp/paspc/src;../../../../../middleware/ble/ip/ble/profiles/pasp/pasps/api;../../../../../middleware/ble/ip/ble/profiles/pasp/pasps/src;../../../../../middleware/ble/ip/ble/profiles/prox/proxm/api;../../../../../middleware/ble/ip/ble/profiles/prox/proxm/src;../../../../../middleware/ble/ip/ble/profiles/prox/proxr/api;../../../../../middleware/ble/ip/ble/profiles/prox/proxr/src;../../../../../middleware/ble/ip/ble/profiles/qpp;../../../../../middleware/ble/ip/ble/profiles/qpp/qppc/api;../../../../../middleware/ble/ip/ble/profiles/qpp/qppc/src;../../../../../middleware/ble/ip/ble/profiles/qpp/qpps/api;../../../../../middleware/ble/ip/ble/profiles/qpp/qpps/src;../../../../../middleware/ble/ip/ble/profiles/rscp;../../../../../middleware/ble/ip/ble/profiles/rscp/rscpc/api;../../../../../middleware/ble/ip/ble/profiles/rscp/rscpc/src;../../../../../middleware/ble/ip/ble/profiles/rscp/rscps/api;../../../../../middleware/ble/ip/ble/profiles/rscp/rscps/src;../../../../../middleware/ble/ip/ble/profiles/scpp;../../../../../middleware/ble/ip/ble/profiles/scpp/scppc/api;../../../../../middleware/ble/ip/ble/profiles/scpp/scppc/src;../../../../../middleware/ble/ip/ble/profiles/scpp/scpps/api;../../../../../middleware/ble/ip/ble/profiles/scpp/scpps/src;../../../../../middleware/ble/ip/ble/profiles/tip;../../../../../middleware/ble/ip/ble/profiles/tip/tipc/api;../../../../../middleware/ble/ip/ble/profiles/tip/tipc/src;../../../../../middleware/ble/ip/ble/profiles/tip/tips/api;../../../../../middleware/ble/ip/ble/profiles/tip/tips/src;../../../../../middleware/ble/ip/ble/profiles/yell;../../../../../middleware/ble/ip/ble/profiles/yell/yells/api;../../../../../middleware/ble/ip/ble/profiles/yell/yells/src;../../../../../middleware/ble/modules/timer_manager/api;../../../../../middleware/ble/modules/power_manager/api;../../../../../middleware/ble/modules/eif_adapter/api;../../../../../middleware/ble/modules/eif_adapter/src/uart_adapter;../../../../../middleware/ble/modules/eif_adapter/src/usb_vcom_adapter;../../../../../middleware/usb_1.0.2;../../../../../middleware/usb_1.0.2/include;../../../../../middleware/usb_1.0.2/device;../../../../../middleware/usb_1.0.2/osa;../../../../../middleware/usb_1.0.2/device/class;.\Accel;.\Alg;.\Tap</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -916,6 +916,81 @@
               <FileName>spi_for_accel.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Accel\spi_for_accel.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Alg</GroupName>
+          <Files>
+            <File>
+              <FileName>AccelBuffer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Alg\AccelBuffer.c</FilePath>
+            </File>
+            <File>
+              <FileName>adxl362_accel.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Alg\adxl362_accel.c</FilePath>
+            </File>
+            <File>
+              <FileName>AlgExec.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Alg\AlgExec.c</FilePath>
+            </File>
+            <File>
+              <FileName>DownSample.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Alg\DownSample.c</FilePath>
+            </File>
+            <File>
+              <FileName>GoalTracking.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Alg\GoalTracking.c</FilePath>
+            </File>
+            <File>
+              <FileName>stats.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Alg\stats.c</FilePath>
+            </File>
+            <File>
+              <FileName>StepCount.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Alg\StepCount.c</FilePath>
+            </File>
+            <File>
+              <FileName>StepPointCounter.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Alg\StepPointCounter.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Tap</GroupName>
+          <Files>
+            <File>
+              <FileName>TapDetection.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Tap\TapDetection.c</FilePath>
+            </File>
+            <File>
+              <FileName>TapHandler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Tap\TapHandler.c</FilePath>
+            </File>
+            <File>
+              <FileName>TapQualifier.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Tap\TapQualifier.c</FilePath>
+            </File>
+            <File>
+              <FileName>TapSampleBuffer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Tap\TapSampleBuffer.c</FilePath>
+            </File>
+            <File>
+              <FileName>TapStateProfiler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Tap\TapStateProfiler.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1830,6 +1905,81 @@
               <FileName>spi_for_accel.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Accel\spi_for_accel.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Alg</GroupName>
+          <Files>
+            <File>
+              <FileName>AccelBuffer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Alg\AccelBuffer.c</FilePath>
+            </File>
+            <File>
+              <FileName>adxl362_accel.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Alg\adxl362_accel.c</FilePath>
+            </File>
+            <File>
+              <FileName>AlgExec.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Alg\AlgExec.c</FilePath>
+            </File>
+            <File>
+              <FileName>DownSample.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Alg\DownSample.c</FilePath>
+            </File>
+            <File>
+              <FileName>GoalTracking.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Alg\GoalTracking.c</FilePath>
+            </File>
+            <File>
+              <FileName>stats.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Alg\stats.c</FilePath>
+            </File>
+            <File>
+              <FileName>StepCount.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Alg\StepCount.c</FilePath>
+            </File>
+            <File>
+              <FileName>StepPointCounter.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Alg\StepPointCounter.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Tap</GroupName>
+          <Files>
+            <File>
+              <FileName>TapDetection.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Tap\TapDetection.c</FilePath>
+            </File>
+            <File>
+              <FileName>TapHandler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Tap\TapHandler.c</FilePath>
+            </File>
+            <File>
+              <FileName>TapQualifier.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Tap\TapQualifier.c</FilePath>
+            </File>
+            <File>
+              <FileName>TapSampleBuffer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Tap\TapSampleBuffer.c</FilePath>
+            </File>
+            <File>
+              <FileName>TapStateProfiler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Tap\TapStateProfiler.c</FilePath>
             </File>
           </Files>
         </Group>

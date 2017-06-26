@@ -6,9 +6,10 @@
 #include "fsl_spi_dma.h"
 #include "power_manager.h"
 #include "accel_spi.h"
+#include "fsl_power.h"
 #include <stdint.h>
 
-#define POWER_PIN 11
+#define POWER_PIN 15
 
 #define DMA_FOR_ACCEL								DMA0
 #define DMA_CHANNEL_FOR_ACCEL_RX		4
@@ -63,6 +64,20 @@ void accel_nondma_transfer(spi_transfer_t * inputTransferConfig)
 #endif
 }
 #endif
+
+void accel_spi_deinit(void)
+{
+    SPI_Deinit(SPI0);
+    GPIO_PinInit(GPIOA, 1, &(gpio_pin_config_t){kGPIO_DigitalOutput, (0U)}); /* SPI0_SSEL2 */
+    GPIO_PinInit(GPIOA, 29, &(gpio_pin_config_t){kGPIO_DigitalOutput, (0U)}); /* SPI0_SCK */
+    GPIO_PinInit(GPIOA, 4, &(gpio_pin_config_t){kGPIO_DigitalOutput, (0U)}); /* SPI0_MOSI */
+    GPIO_PinInit(GPIOA, 5, &(gpio_pin_config_t){kGPIO_DigitalOutput, (0U)}); /* SPI0_MISO */
+    GPIO_WritePinOutput(GPIOA, 1, 0);
+    GPIO_WritePinOutput(GPIOA, 29, 0);
+    GPIO_WritePinOutput(GPIOA, 4, 0);
+    GPIO_WritePinOutput(GPIOA, 5, 0);
+    
+}
 
 void accel_spi_init(void)
 {
@@ -127,9 +142,9 @@ uint8_t ADXL362_SPI_Write(uint8_t slaveDeviceId, uint8_t* data, uint8_t bytesNum
 
 void accel_power_off(void)
 {
-    GPIO_ClearPinsOutput(GPIOA, 1 << POWER_PIN);
+    GPIO_PinInit(GPIOA, POWER_PIN, &(gpio_pin_config_t){kGPIO_DigitalOutput, 0U});
 }
 void accel_power_on(void)
 {
-    GPIO_SetPinsOutput(GPIOA, 1 << POWER_PIN);
+    GPIO_PinInit(GPIOA, POWER_PIN, &(gpio_pin_config_t){kGPIO_DigitalOutput, 1U});
 }

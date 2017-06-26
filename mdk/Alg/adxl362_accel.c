@@ -7,6 +7,7 @@
 #include "accel_spi.h"
 #include "AccelBuffer.h"
 #include "TapHandler.h"
+#include "spi_for_accel.h"
 
 
 #define CONFIG_USE_TAP_DETECTION	1
@@ -358,6 +359,7 @@ void adxl362_WtmIsr( void )
     transferConfig.rxData = (uint8_t *) TempBuffer;
     transferConfig.dataSize = (ACCEL_NUM_SAMPLES_PER_WTM*2*3 + 1);
 	accel_nondma_transfer(&transferConfig);
+    accel_spi_deinit();
     adxl362_accel_fifo_receive_handler();
 #endif
 }

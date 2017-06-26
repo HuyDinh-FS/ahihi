@@ -138,11 +138,12 @@ void GPIOA_IRQHandler(void)
         if (int_state & s_buttonGpioPinMask[i])
         {
             // HDinh: bypass the debouncer module
-            struct app_button_down_cmd *cmd = KE_MSG_ALLOC(APP_MSG_BUTTON_DOWN, TASK_APP, TASK_APP, app_button_down_cmd);
+            APP_ButtonDownCallback(s_buttonGpioPinMask[i]);
+            //struct app_button_down_cmd *cmd = KE_MSG_ALLOC(APP_MSG_BUTTON_DOWN, TASK_APP, TASK_APP, app_button_down_cmd);
 
-            cmd->pin = s_buttonGpioPinMask[i];
+            //cmd->pin = s_buttonGpioPinMask[i];
 
-            APP_MsgSend(cmd);
+            //APP_MsgSend(cmd);
             //TM_SetTimer(s_buttonTimerID[i], kTM_SingleShotTimer, BUTTON_CHK_DLY, (tm_callback_t)BUTTON_DebounceHandler,
             //            (void *)(s_buttonGpioPinMask[i]));
         }

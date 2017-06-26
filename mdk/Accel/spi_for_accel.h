@@ -19,4 +19,5 @@ extern void accel_ChipInit(void);
 extern void accel_spi_pins_disable(void);
 extern void accel_dma_transfer(spi_transfer_t * inputTransferConfig);
 extern void accel_nondma_transfer(spi_transfer_t * inputTransferConfig);
+extern void accel_spi_deinit(void);
 #endif /* ACCEL_SPI_FOR_ACCEL_H_ */
